@@ -331,18 +331,16 @@ var element = ['pierre', 'feuille', 'ciseaux'];
 var pointUser=0;
 var pointDesktop=0;
 function game(element){
-  /*on demande a l'utilisateur de faire son choix*/
 
-  /*on determine le choix au hazard de l'ordinateur*/
-
-
-
-
-  /*tant que pointUser n'egale pas 3 n'egale pas 3 point ou pointDesktop n'egale pas 3point on continu*/
+  /*tant que pointUser n'egale pas 3 n'egale pas 3 point ou pointDesktop n'egale pas 3point on continu la boucle*/
   while (pointUser < 3 && pointDesktop < 3) {
+    /*on demande a l'utilisateur de faire son choix*/
     var user = prompt("Choisissez entre pierre, feuille ou ciseaux");
+    /*on determine le choix au hazard de l'ordinateur*/
     var hazard = element[Math.floor(element.length * Math.random())];
     /*Si l'utilisateur saisie autre chose que pierre, feuille ou ciseaux on affiche une erreur*/
+
+    /*Tant que l'utilisateur ne saisie pas une bonne reponse on lui redemande*/
     while (user!= 'feuille' && user!= 'pierre' && user!= 'ciseaux') {
       alert('Erreur de saisie');
       user = prompt("Choisissez entre pierre, feuille ou ciseaux");
@@ -353,13 +351,14 @@ function game(element){
       console.log('Vous êtes arrivé a '+pointUser+' points');
       console.log('L\'ordinateur est a '+pointDesktop+' points');
     }
-
+    /*sinon si ...*/
     else if (user==='pierre' && hazard==='ciseaux' || user==='feuille' && hazard==='pierre' || user==='ciseaux' && hazard==='feuille') {
           alert('Gagné !!');
           pointUser++;
           console.log('Vous êtes arrivé a '+pointUser+' points');
           console.log('L\'ordinateur est a '+pointDesktop+' points');
     }
+    /*sinon...*/
     else {
       alert('perdu');
       pointDesktop++;
@@ -367,9 +366,11 @@ function game(element){
       console.log('L\'ordinateur est a '+pointDesktop+' points');
     }
   }
+  /*si l'utilisateur ateint 3 points on affiche dans la console qu'il a gagné*/
   if (pointUser===3) {
     console.log('Vous avez gagné');
   }
+  /*sinon*/
   else {
     console.log('vous avez perdu');
   }
